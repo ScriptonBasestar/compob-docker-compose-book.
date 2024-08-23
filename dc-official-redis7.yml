@@ -1,0 +1,12 @@
+services:
+  redis:
+    image: redis:7
+    container_name: redis_dev
+    restart: always
+    command: ['redis-server', '/usr/local/etc/redis/redis.conf']
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./config/redis/redis-official.conf:/usr/local/etc/redis/redis.conf
+    environment:
+      - REDIS_PASSWORD=passw0rd

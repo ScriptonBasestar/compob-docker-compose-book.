@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: bitnami/postgres:15
+    container_name: postgres_dev
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRESQL_USERNAME=user01
+      - POSTGRESQL_PASSWORD=passw0rd
+      - POSTGRESQL_DATABASE=db01

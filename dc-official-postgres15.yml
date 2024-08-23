@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres_dev
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./config/postgres/init-user-bitnami.sql:/docker-entrypoint-initdb.d/00-user.sql
+#      - ./config/postgres/init-user-official.sh:/docker-entrypoint-initdb.d/00-user.sh
+#      - ./config/postgres/init-pg_hba.sh:/docker-entrypoint-initdb.d/01-hba.sh
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_PASSWORD=passw0rd
+      - POSTGRES_USER=user01
+      - POSTGRES_DB=db01
